@@ -3,6 +3,9 @@ FROM richarvey/nginx-php-fpm:1.10.3
 # Copiar el código del proyecto al contenedor
 COPY . /var/www/html
 
+# Copiar la configuración correcta de Nginx para Laravel
+COPY nginx.conf /etc/nginx/sites-available/default.conf
+
 # Configurar el directorio raíz hacia la carpeta public de Laravel
 ENV WEBROOT /var/www/html/public
 ENV APP_ENV production
