@@ -7,6 +7,9 @@ COPY . /var/www/html
 ENV WEBROOT /var/www/html/public
 ENV APP_ENV production
 
+# Solucionar el problema de mayúsculas/minúsculas en Linux antes de compilar
+RUN ln -s /var/www/html/resources/js/components /var/www/html/resources/js/Components
+
 # Instalar dependencias necesarias obligando a Composer a pasar la validación
 RUN apk add --no-cache nodejs npm \
     && composer install --no-dev --optimize-autoloader --ignore-platform-reqs \
